@@ -11,6 +11,7 @@ import NewRenderer from "./js/new-renderer.js";
 // Import quicklink
 import quicklink from "quicklink/dist/quicklink.mjs";
 
+
 // Call Highway.Core once.
 // Store it in a variable to use events
 // The custom transition will be used for the page labelled by `name`.
