@@ -1,14 +1,27 @@
 import Highway from "@dogstudio/highway";
-import { TimelineMax, TweenLite } from "gsap/TweenMax";
+import {
+	TimelineMax,
+	TweenLite
+} from "gsap/TweenMax";
 import ScrollMagic from "scrollmagic";
 import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
 import imageCover from "./image-animations.js";
 import zoomOutOnScroll from "./scroll-zoom.js";
 
+let newController;
+
+function scrollBarHandler() {
+	// adding image zoom on scroll, which manipulates the footer/next project/home image
+	let nextProjectImage = document.querySelector(".next-project-img");
+	let nextProjectText = document.querySelector(".next-project-text");
+	zoomOutOnScroll(nextProjectImage, nextProjectText);
+}
+
 class NewRenderer extends Highway.Renderer {
-	
-	onEnter() {
-		var newController = new ScrollMagic.Controller();
+
+	onEnterCompleted() {
+		// create new scrollmagic controller
+		newController = new ScrollMagic.Controller();
 
 		// image animation
 		// 1. black rectanglular div appears from left side
@@ -16,9 +29,9 @@ class NewRenderer extends Highway.Renderer {
 		let newTlImage = new TimelineMax();
 
 		newTlImage.from(".image-cover", 0.5, {
-			scaleX: 0,
-			transformOrigin: "left",
-		})
+				scaleX: 0,
+				transformOrigin: "left",
+			})
 			.to(".image-cover", 1, {
 				scaleX: 0,
 				transformOrigin: "right"
@@ -26,7 +39,7 @@ class NewRenderer extends Highway.Renderer {
 			.from(".project-image", 0.1, {
 				opacity: 0
 			}, "reveal");
-	
+
 		// scrolling carousel animation
 		// 1. black rectangular div appears from mid left side
 		// 2. grows until reaches end of screen
@@ -34,9 +47,9 @@ class NewRenderer extends Highway.Renderer {
 		let newTlScrolling = new TimelineMax();
 
 		newTlScrolling.from(".scroll-cover", 0.5, {
-			scaleX: 0,
-			transformOrigin: "left"
-		})
+				scaleX: 0,
+				transformOrigin: "left"
+			})
 			.to(".scroll-cover", 1, {
 				scaleX: 0,
 				transformOrigin: "right"
@@ -44,42 +57,36 @@ class NewRenderer extends Highway.Renderer {
 			.from(".scrolling-card", 0.1, {
 				opacity: 0
 			}, "reveal");
-		
 
-		// adding image zoom on scroll, which manipulates the footer/next project/home image
-		let nextProjectImage = document.querySelector(".next-project-img");
-		let nextProjectText = document.querySelector(".next-project-text");
-		document.addEventListener("scroll", () => zoomOutOnScroll(nextProjectImage, nextProjectText));
-        
+		document.addEventListener("scroll", scrollBarHandler);
+
 		// positions at which the user has to scroll in order that the GSAP animations occur
 		// 1st scene : tlImage tween executed when scrolled to .project-img-container
-		let newImageSM = new ScrollMagic.Scene({
-			triggerElement: ".project-img-container",
-			reverse: false,
-		})
+		new ScrollMagic.Scene({
+				triggerElement: ".project-img-container",
+				reverse: false,
+			})
 			.setTween(newTlImage)
 			.addTo(newController);
 
 		// 2nd scene : tlScrolling tween executed when scrolled to .scrolling-wrapper
-		let newScrollingSM = new ScrollMagic.Scene({
-			triggerElement: ".scrolling-wrapper",
-			reverse: false,
-		})
+		new ScrollMagic.Scene({
+				triggerElement: ".scrolling-wrapper",
+				reverse: false,
+			})
 			.setTween(newTlScrolling)
 			.addTo(newController);
 
 	}
 	onLeave() {
+
 		// gsap + scrollmagic controller destroy on leaving the page
 		TweenLite.defaultOverwrite = false;
-		// newController.destroy();
-		
+		newController.destroy();
+		document.removeEventListener("scroll", scrollBarHandler);
 
 	}
-	onEnterCompleted() {}
-	onLeaveCompleted() {
-
-	}
+	onLeaveCompleted() {}
 }
 
 export default NewRenderer;

@@ -8,13 +8,20 @@ import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
 import imageCover from "./image-animations.js";
 import zoomOutOnScroll from "./scroll-zoom.js";
 
-// create new scrollmagic controller
-var controller = new ScrollMagic.Controller();
+let controller;
+
+function scrollBarHandler() {
+	// adding image zoom on scroll, which manipulates the footer/next project/home image
+	let nextProjectImage = document.querySelector(".next-project-img");
+	let nextProjectText = document.querySelector(".next-project-text");
+	zoomOutOnScroll(nextProjectImage, nextProjectText);
+}
 
 class CustomRenderer extends Highway.Renderer {
 
-	onEnter() {
-		var controller = new ScrollMagic.Controller();
+	onEnterCompleted() {
+		// create new scrollmagic controller
+		controller = new ScrollMagic.Controller();
 
 		// image animation
 		// 1. black rectanglular div appears from left side
@@ -22,9 +29,9 @@ class CustomRenderer extends Highway.Renderer {
 		let tlImage = new TimelineMax();
 
 		tlImage.from(".image-cover", 0.5, {
-			scaleX: 0,
-			transformOrigin: "left",
-		})
+				scaleX: 0,
+				transformOrigin: "left",
+			})
 			.to(".image-cover", 1, {
 				scaleX: 0,
 				transformOrigin: "right"
@@ -40,9 +47,9 @@ class CustomRenderer extends Highway.Renderer {
 		let tlScrolling = new TimelineMax();
 
 		tlScrolling.from(".scroll-cover", 0.5, {
-			scaleX: 0,
-			transformOrigin: "left"
-		})
+				scaleX: 0,
+				transformOrigin: "left"
+			})
 			.to(".scroll-cover", 1, {
 				scaleX: 0,
 				transformOrigin: "right"
@@ -51,27 +58,22 @@ class CustomRenderer extends Highway.Renderer {
 				opacity: 0
 			}, "reveal");
 
-
-		// adding image zoom on scroll, which manipulates the footer/next project/home image
-		let nextProjectImage = document.querySelector(".next-project-img");
-		let nextProjectText = document.querySelector(".next-project-text");
-		document.addEventListener("scroll", () => zoomOutOnScroll(nextProjectImage, nextProjectText));
-
+		document.addEventListener("scroll", scrollBarHandler);
 
 		// positions at which the user has to scroll in order that the GSAP animations occur
 		// 1st scene : tlImage tween executed when scrolled to .project-img-container
-		let imageSM = new ScrollMagic.Scene({
-			triggerElement: ".project-img-container",
-			reverse: false,
-		})
+		new ScrollMagic.Scene({
+				triggerElement: ".project-img-container",
+				reverse: false,
+			})
 			.setTween(tlImage)
 			.addTo(controller);
 
 		// 2nd scene : tlScrolling tween executed when scrolled to .scrolling-wrapper
-		let scrollingSM = new ScrollMagic.Scene({
-			triggerElement: ".scrolling-wrapper",
-			reverse: false,
-		})
+		new ScrollMagic.Scene({
+				triggerElement: ".scrolling-wrapper",
+				reverse: false,
+			})
 			.setTween(tlScrolling)
 			.addTo(controller);
 
@@ -80,10 +82,10 @@ class CustomRenderer extends Highway.Renderer {
 		// gsap + scrollmagic controller destroy on leaving the page
 		TweenLite.defaultOverwrite = false;
 		controller.destroy();
-		// document.removeEventListener("scroll")
+		document.removeEventListener("scroll", scrollBarHandler);
 	}
 
-	onEnterCompleted() {}
+
 	onLeaveCompleted() {}
 }
 
