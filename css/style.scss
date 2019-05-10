@@ -1,0 +1,60 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color:white;
+    font-family: roboto;
+}
+
+.header {
+    height: 200px;
+    position: relative;
+}
+
+.name, .project-name {
+    color: #FFBBBB;
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    font-size: 3em;
+}
+
+.project {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+#last-project {
+    margin-bottom: 0px;
+}
+
+.project-name {
+    color: #FFBBBB;
+}
+
+video {
+    width: 100%;
+}
+
+#snaps-project, #mond-project {
+    background-color: white;
+}
+
+#snaps-project > .project, #mond-project > .project {
+    margin-bottom: 15%;
+}
+
+.project-img {
+    width: 100%;
+}
+
+@import "./_contact";
+
+@import "./_underline";
+
+@import "./_project";
+
+@import "./_snaps";
+
+@import "./_mediaQueries";
+
+@import "./transition-cover";

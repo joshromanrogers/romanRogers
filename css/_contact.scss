@@ -1,0 +1,28 @@
+.contact {
+    display: grid;
+    grid-template-areas: ' . mail ghub gram twtr . ';
+    grid-template-columns: repeat(6, 1fr);
+    width: 100%;
+    height: 300px;
+    color: #ffbbbb;
+    font-size: 2em;
+    font-family: roboto;
+    text-align: center;
+    align-items: center;
+}
+
+#mail {
+    grid-area: mail;
+}
+
+#ghub {
+    grid-area: ghub;
+}
+
+#gram {
+    grid-area: gram;
+}
+
+#twtr {
+    grid-area: twtr;
+}

@@ -1,0 +1,43 @@
+.underline {
+  color: #FFBBBB;
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.underline:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 5px;
+  left: 50%;
+  position: absolute;
+  background: #FFBBBB;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.underline:hover:after {
+  width: 50%;
+  left: 25%;
+}
+
+.home-text>.underline {
+  color: #FFBBBB;
+}
+
+.home-text>.underline:after {
+  background: #FFBBBB;
+}
+
+.underline-white {
+  color: white;
+}
+
+.underline-white:after {
+  background: white;
+}

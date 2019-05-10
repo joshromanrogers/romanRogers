@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- transition cover -->
+    <div class="transition-cover"></div>
+    <main data-router-wrapper>
+        <section data-router-view="project" id="notflix-project">
+            <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+            <!-- home + prev project button -->
+            <div class="top-row row">
+                <div class="home-link col">
+                    <div class="home-text">
+                        <a class="underline" href="index.html">home</a>
+                    </div>
+                </div>
+                <div class="prev-proj-link col">
+                    <div class="prev-proj-text">
+                        <a class="underline underline-white" href="project.html">visualiser</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-description">
+                <!-- project name -->
+                <h1 class="project-title">notflix</h1>
+                <!-- initial description -->
+                <p>
+                    A fresh perspective on free time, based on your age and energy.
+                    <span class="highlight">Time is limited</span>. Take advantage, explore and grow.
+                </p>
+            </div>
+
+            <!-- video w/ anim -->
+            <div class="project-img-container">
+                <div class="image-wrapper">
+                    <video class="project-image" autoplay="autoplay" loop muted>
+                        <source src="./media/notflix/notflixVid.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="image-cover"></div>
+                </div>
+            </div>
+
+            <!-- 2nd description -->
+            <p class="project-description pd2">
+                <span class="highlight">Designed + developed</span>
+                with an emphasis on <span class="highlight">dynamic js</span>
+                and <span class="highlight">css grid</span> in <span class="highlight">2019</span>.
+            </p>
+            <!-- imgs/vids carousel w/ anim -->
+            <div class="scrolling-wrapper">
+                <div class="scrolling-card">
+                    <img class="scrolling-img" src="./media/notflix/notflixLoadDesktop.png">
+                </div>
+                <div class="scrolling-card">
+                    <img class="scrolling-img" src="./media/notflix/notflixMainDesktop.png">
+                </div>
+                <div class="scrolling-card">
+                    <img class="scrolling-img" src="./media/notflix/notflixKidsDesktop.png">
+                </div>
+                <div class="scrolling-card">
+                    <img class="scrolling-img" src="./media/notflix/notflixInfoDesktop.png">
+                </div>
+                <div class="scrolling-card">
+                    <img class="scrolling-img" src="./media/notflix/notflixLoadMobile.png">
+                </div>
+                <div class="scrolling-card">
+                    <img class="scrolling-img" src="./media/notflix/notflixMainMobile.png">
+                </div>
+                <div class="scrolling-card">
+                    <img class="scrolling-img" src="./media/notflix/notflixKidsMobile.png">
+                </div>
+                <div class="scrolling-card">
+                    <img class="scrolling-img" src="./media/notflix/notflixInfoMobile.png">
+                </div>
+
+                <div class="scroll-cover"></div>
+            </div>
+
+             <!-- link to site -->
+            <div class="project-description visit-description">
+                <p>
+                    <a class="visit" href="http://notflix.page">Visit notflix.</a>
+                </p>
+            </div>
+
+           
+
+            <!-- next project button -->
+            <div class="next-project">
+                <img class="next-project-img" src="./media/snaps/snapsCollageDesktop.png">
+                <div class="next-project-text">
+                    <a class="underline" href="./project2.html">snaps</a>
+                </div>
+            </div>
+
+
+
+            <script src="index.js"></script>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen and (min-width: 100px) and (max-width: 480px) {
+    .project {
+      margin-bottom: 15px;
+    }
+
+    #last-project {
+      margin-bottom: 50px;
+    }
+
+    // contact section goes from row of four to two rows of two
+    .contact {
+      display: grid;
+      grid-template-areas: '  mail ghub   '
+                           '  gram twtr   ';
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);    
+    }
+
+    .next-project {
+      height: 300px;
+    }
+
+    .next-project-img {
+      width: 185%;
+    }
+
+    // project vid, cover the width of the screen
+    .project-image {
+      width: 100%;
+    }
+
+    .image-cover {
+      width: 100%;
+    }
+
+    .scrolling-wrapper {
+      width: 100%;
+      left: 0%;
+    }
+
+    .scrolling-wrapper:first-child {
+      padding-left: 0%;
+    }
+
+    .scrolling-img {
+      max-height: 300px;
+  }
+
+    .project-description, .project-img-container, .scrolling-wrapper {
+    margin: 50px 0;
+  }
+
+  .visit-description {
+    margin: 25px 0;
+  }
+
+  .next-project {
+    margin-top: 50px;
+  }
+
+  .project-title {
+    font-size: 1.8em;
+  }
+
+  }
+
+  /* iPads (portrait and landscape) ----------- */
+  /* remove side images */
+  @media only screen and (min-width: 480px) and (max-width: 800px) {
+    .next-project {
+      height: 400px;
+    }
+
+    .next-project-img {
+      width: 150%;
+    }
+  }
