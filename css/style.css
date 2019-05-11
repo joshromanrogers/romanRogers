@@ -8,7 +8,7 @@ body {
 }
 
 .header {
-  height: 200px;
+  height: 250px;
   position: relative;
 }
 
@@ -23,6 +23,18 @@ body {
 .project {
   position: relative;
   margin-bottom: 25px;
+}
+
+.headName {
+  bottom: 20%;
+}
+
+.challenge {
+  bottom: 15%;
+  font-size: 1.5em;
+  font-style: italic;
+  color: black;
+  opacity: 0.6;
 }
 
 #last-project {
